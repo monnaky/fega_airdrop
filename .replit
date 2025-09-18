@@ -34,4 +34,10 @@ integrations = ["javascript_database:1.0.0"]
 
 [[ports]]
 localPort = 8080
-externalPort = 80
+
+run = "npm run dev"
+[deployment]
+run = "npm run dev"
+[[ports]]
+localPort = 8080
+externalPort = 443
