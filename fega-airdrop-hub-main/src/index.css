@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FEGA Token Airdrop - Dark Pink Gradient Theme */
+
+@layer base {
+  :root {
+    /* Dark gradient background theme */
+    --background: 224 71% 4%;
+    --foreground: 223 84% 97%;
+
+    /* Elevated surfaces with pink accent */
+    --card: 223 47% 7%;
+    --card-foreground: 223 84% 97%;
+
+    --popover: 223 47% 7%;
+    --popover-foreground: 223 84% 97%;
+
+    /* Pink gradient primary colors */
+    --primary: 328 100% 54%;
+    --primary-foreground: 223 47% 7%;
+    --primary-glow: 328 100% 64%;
+
+    --secondary: 223 47% 10%;
+    --secondary-foreground: 223 84% 97%;
+
+    --muted: 223 47% 8%;
+    --muted-foreground: 220 9% 64%;
+
+    --accent: 328 100% 70%;
+    --accent-foreground: 223 47% 7%;
+
+    /* Status colors */
+    --success: 142 76% 36%;
+    --success-foreground: 223 84% 97%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 223 84% 97%;
+
+    --border: 223 47% 15%;
+    --input: 223 47% 12%;
+    --ring: 328 100% 54%;
+
+    --radius: 0.75rem;
+
+    /* Custom pink gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(328 100% 64%), hsl(328 100% 54%));
+    --gradient-background: linear-gradient(135deg, hsl(224 71% 4%), hsl(262 83% 8%), hsl(328 100% 20%));
+    --gradient-card: linear-gradient(135deg, hsl(223 47% 7% / 0.8), hsl(223 47% 10% / 0.9));
+    --gradient-pink-glow: radial-gradient(circle, hsl(328 100% 54% / 0.3), transparent);
+
+    /* Pink glow shadows */
+    --shadow-pink: 0 0 30px hsl(328 100% 54% / 0.5);
+    --shadow-card: 0 8px 32px hsl(223 47% 4% / 0.7), 0 0 1px hsl(328 100% 54% / 0.2);
+    --shadow-button: 0 4px 20px hsl(328 100% 54% / 0.4);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: box-shadow 0.3s ease, transform 0.2s ease;
+
+    /* Sidebar colors */
+    --sidebar-background: 223 47% 7%;
+    --sidebar-foreground: 223 84% 97%;
+    --sidebar-primary: 328 100% 54%;
+    --sidebar-primary-foreground: 223 47% 7%;
+    --sidebar-accent: 223 47% 10%;
+    --sidebar-accent-foreground: 223 84% 97%;
+    --sidebar-border: 223 47% 15%;
+    --sidebar-ring: 328 100% 54%;
+  }
+
+  /* Light mode (minimal override - keep dark theme dominant) */
+  .light {
+    --background: 223 84% 97%;
+    --foreground: 223 47% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 223 47% 7%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 220 9% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    min-height: 100vh;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
+
+@layer components {
+  /* Gradient text for headings */
+  h1, h2, h3, h4 {
+    background: linear-gradient(135deg, hsl(328 100% 74%), hsl(328 100% 54%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+
+  /* Pink glow effects */
+  .glow-effect {
+    box-shadow: var(--shadow-pink);
+    transition: var(--transition-glow);
+  }
+
+  .glow-effect:hover {
+    box-shadow: var(--shadow-pink), 0 0 60px hsl(328 100% 54% / 0.8);
+    transform: translateY(-2px);
+  }
+
+  /* Card styling with pink accents */
+  .card-glow {
+    background: var(--gradient-card);
+    border: 1px solid hsl(328 100% 54% / 0.2);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+  }
+
+  .card-glow:hover {
+    border-color: hsl(328 100% 54% / 0.6);
+    box-shadow: var(--shadow-card), var(--shadow-pink);
+    transform: translateY(-4px);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Pink button styling */
+  .btn-pink {
+    background: linear-gradient(135deg, hsl(328 100% 64%), hsl(328 100% 54%));
+    border: none;
+    color: white;
+    transition: var(--transition-glow);
+    box-shadow: var(--shadow-button);
+  }
+
+  .btn-pink:hover {
+    box-shadow: var(--shadow-button), 0 0 40px hsl(328 100% 54% / 0.8);
+    transform: translateY(-2px);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+
+  /* Responsive and hover utilities */
+  .hover-scale {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Enhanced responsive design */
+  @media (max-width: 768px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .grid {
+      gap: 1rem;
+    }
+
+    .card-glow {
+      margin: 0.5rem 0;
+    }
+    
+    /* Better mobile button spacing */
+    .space-y-4 > * + * {
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .text-4xl {
+      font-size: 2rem;
+    }
+    
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+
+    /* Stack buttons vertically on mobile */
+    .flex.gap-2 {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* Improve tab navigation on mobile */
+    .grid-cols-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.25rem;
+    }
+
+    .grid-cols-5 span {
+      font-size: 0.625rem;
+    }
+  }
+}

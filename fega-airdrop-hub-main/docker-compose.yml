@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_SUPABASE_URL=https://idcfieikxrcopimxfxup.supabase.co
+      - VITE_SUPABASE_PUBLISHABLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlkY2ZpZWlreHJjb3BpbXhmeHVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQzNjA4NDQsImV4cCI6MjA2OTkzNjg0NH0.8lUZwNVtb6iPmTxKcugofYLDVTyE4DB3Bqca76mAOwQ
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
+    
+  # Optional: If you want to run Supabase locally
+  # supabase:
+  #   image: supabase/supabase:latest
+  #   ports:
+  #     - "54321:54321"
+  #     - "54322:54322"
+  #   environment:
+  #     - POSTGRES_PASSWORD=your-super-secret-and-long-postgres-password
