@@ -31,13 +31,3 @@ waitForPort = 5000
 
 [agent]
 integrations = ["javascript_database:1.0.0"]
-
-[[ports]]
-localPort = 8080
-
-run = "npm run dev"
-[deployment]
-run = "npm run dev"
-[[ports]]
-localPort = 8080
-externalPort = 443
