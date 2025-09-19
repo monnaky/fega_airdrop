@@ -50,8 +50,18 @@ export const useNewWalletAuth = () => {
       if (existingUsers && existingUsers.length > 0) {
         setUser(existingUsers[0]);
       } else {
-        // MANUAL REFERRAL SYSTEM: Get referrer info before creating user
-        const referrerWallet = localStorage.getItem('referrer_wallet');
+        // FIXED: Check URL for referral code FIRST, then localStorage as fallback
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlReferrerWallet = urlParams.get('ref');
+        let referrerWallet = localStorage.getItem('referrer_wallet');
+        
+        // If URL has ref param, use it and store it (handles direct navigation)
+        if (urlReferrerWallet) {
+          referrerWallet = urlReferrerWallet;
+          localStorage.setItem('referrer_wallet', urlReferrerWallet);
+          console.log('🔧 FIXED (useNewWalletAuth): Found referrer in URL:', urlReferrerWallet);
+        }
+        
         let referrerId = null;
         
         console.log('🔍 STEP 2 DEBUG (useNewWalletAuth): Checking for referral...');

@@ -1,33 +1,11 @@
-modules = ["nodejs-20", "web"]
+modules = ["nodejs-20"]
 
-[nix]
-channel = "stable-25_05"
+[[ports]]
+localPort = 5173
+externalPort = 80
 
-[deployment]
-deploymentTarget = "autoscale"
-run = ["npm", "run", "start"]
-build = ["npm", "run", "build"]
+[[ports]]
+localPort = 5174
 
-[workflows]
-runButton = "Project"
-
-[[workflows.workflow]]
-name = "Project"
-mode = "parallel"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Start application"
-
-[[workflows.workflow]]
-name = "Start application"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npm run dev"
-waitForPort = 5000
-
-[agent]
-integrations = ["javascript_database:1.0.0"]
+[[ports]]
+localPort = 8080
